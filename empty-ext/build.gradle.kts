@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
 
     alias(libs.plugins.android.library)
@@ -11,13 +13,14 @@ plugins {
 android {
 
     namespace = "io.bashpsk.emptyext"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
 
         minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,13 +38,13 @@ android {
 
     compileOptions {
 
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
+    kotlin {
 
-        jvmTarget = "11"
+        compilerOptions.jvmTarget = JvmTarget.JVM_17
     }
 
     publishing {
